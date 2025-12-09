@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL LÍMITE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        
+        :root {
+            --color-primary-blue: #87CEEB;
+            --color-secondary-blue: #2C7BB6;
+            --color-accent-green: #4CAF50;
+            --color-text-dark: #000000;
+            --color-bg-light: #AECBEB;
+            --font-display: 'Luckiest Guy', cursive;
+            --font-body: 'Nunito', sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-light);
+            color: var(--color-text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .navbar-brand {
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background-color: var(--color-secondary-blue);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .navbar-custom .nav-link {
+            color: white !important;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .navbar-custom .nav-link:hover {
+            transform: scale(1.1);
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+
+        /* Botones */
+        .btn-ludico {
+            background-color: var(--color-secondary-blue);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 30px;
+            font-family: var(--font-body);
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+            transition: all 0.1s;
+            cursor: pointer;
+        }
+
+        .btn-ludico:hover {
+            background-color: #1a5a8a;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .btn-ludico:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        /* Secciones */
+        .section-block {
+            padding: 40px 20px;
+            width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .section-alt {
+            background-color: var(--color-secondary-blue);
+            color: white;
+        }
+
+        @media (max-width: 576px) {
+            .section-block {
+                padding: 30px 15px;
+            }
+        }
+
+        /* Carruseles */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 10px 40px;
+}
+
+.carousel-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 15px;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item-wrapper {
+    flex: 0 0 calc(25% - 20px); /* 4 tarjetas visibles */
+    min-width: 240px;
+}
+
+.carousel-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+    height: 100%;
+}
+
+.carousel-card:hover {
+    transform: translateY(-5px) scale(1.03);
+}
+
+.carousel-card img {
+    width: 100%;
+    height:400px;
+    object-fit: contain; 
+    background-color:#ffffff; 
+}
+
+.carousel-card-body {
+    padding: 15px;
+    text-align: center;
+    background-color: #6c757d;
+    color: white;
+}
+
+.carousel-card-title {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    margin: 0;
+}
+
+/* Botones */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.carousel-btn-prev {
+    left: 0;
+}
+
+.carousel-btn-next {
+    right: 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .carousel-item-wrapper {
+        flex: 0 0 calc(50% - 20px); /* 2 tarjetas */
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item-wrapper {
+        flex: 0 0 calc(80% - 20px); /* 1 tarjeta grande */
+    }
+}
+
+
+        /* Video Containers */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background-color: #000;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .play-button-overlay {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .play-button-overlay:hover {
+            background-color: white;
+            transform: scale(1.1);
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 25px solid var(--color-secondary-blue);
+            margin-left: 5px;
+        }
+
+        /* Footer */
+        .footer-custom {
+            background-color: var(--color-primary-blue);
+            padding: 40px 0;
+            border-top: 4px solid white;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: white;
+            margin: 0 15px;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: var(--color-secondary-blue);
+        }
+
+        /* Modal */
+        .modal-custom {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-custom.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content-custom {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-close:hover {
+            color: #000;
+        }
+
+        .modal-header-custom {
+            background-color: var(--color-secondary-blue);
+            color: white;
+            padding: 20px;
+            border-radius: 20px 20px 0 0;
+            margin: -30px -30px 20px -30px;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+        }
+
+        .text-info-box {
+            background-color: rgba(255,255,255,0.15);
+            border-left: 4px solid white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .text-info-box h4 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .text-info-box p {
+            color: white;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+    
+header img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* PC y pantallas anchas */
+@media (min-width: 992px) {
+    header img {
+        max-width: 700px; /* tamaño ideal en PC */
+    }
+}
+
+/* Tablets */
+@media (max-width: 991px) and (min-width: 577px) {
+    header img {
+        max-width: 380px;
+    }
+}
+
+/* CELULAR */
+@media (max-width: 576px) {
+
+    #contacto {
+        background-size: cover !important;
+        background-position: right center !important; 
+        padding-top: 250px;
+        padding-bottom: 250px;
+    }
+
+    .contacto-content {
+        margin-left: 0 !important;
+        text-align: center;
+        width: 100%;
+    }
+
+    .contacto-title {
+        font-size: 45px;
+        text-align: center;
+    }
+
+    .contacto-icons {
+        font-size: 35px;
+        gap: 25px;
+        justify-content: center;
+    }
+}
+
+
+/* CONTACTO — ESCRITORIO (PC) */
+#contacto {
+    background-image: url('ansiedadjojo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-color: #87CEEB;
+    padding-top: 300px;
+    padding-bottom: 300px;
+}
+
+.contacto-content {
+    margin-left: 480px;
+    width: fit-content;
+}
+
+.contacto-title {
+    color: #87CEEB; 
+    margin-bottom: 20px;
+    font-size: 80px;
+    font-weight: 900;
+    text-align: left;
+}
+
+.contacto-icons {
+    display: flex;
+    justify-content: center; 
+    gap: 40px;
+    font-size: 55px;
+    width: 100%;
+}
+
+.contacto-icons a i {
+    color: #87CEEB ;
+    transition: 0.2s;
+}
+
+.contacto-icons a i:hover {
+    color: #2C7BB6;
+}
+
+/* TABLET */
+@media (max-width: 1488px) {
+    .contacto-content {
+        margin-left: 150px;
+    }
+
+    .contacto-title {
+        font-size: 80px;
+    }
+
+    .contacto-icons {
+        font-size: 45px;
+    }
+}
+
+/* CELULAR */
+@media (max-width: 1029px) {
+
+    #contacto {
+        background-size: cover;
+        background-position: right center;
+        padding-top: 220px;
+        padding-bottom: 220px;
+    }
+
+    .contacto-content {
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .contacto-title {
+        font-size: 55px;
+        color: #87CEEB;
+        text-align: center;
+    }
+
+    .contacto-icons {
+        font-size: 45px;
+        gap: 30px;
+        justify-content: center; /* CENTRADO */
+    }
+
+    .contacto-icons a i {
+        color: #87CEEB;
+    }
+}
+
+/* carrusel de MAKING OF */
+#makingofCarousel .carousel-card img {
+    object-fit: cover;
+}
+
+/* NUESTRO EQUIPO */
+#equipo .carousel-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+#equipo .carousel-card:hover {
+    transform: translateY(-5px) scale(1.03);
+}
+
+#equipo .carousel-card img {
+    width: 100%;
+    height: 380px;
+    object-fit: contain;
+}
+
+#equipo .carousel-card-body {
+    padding: 15px;
+    background: #6c757d;
+    color: white;
+    text-align: center;
+}
+
+#equipo .carousel-card-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    #equipo .carousel-item-wrapper {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    #equipo .carousel-item-wrapper {
+        flex: 0 0 calc(80% - 20px);
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container-fluid px-3">
+            <img src="glob.png" alt="130px" width="130px">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#personajes">Personajes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bocetacion">Bocetación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#audiovisual">Audiovisual</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#equipo">Nuestro Equipo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header id="inicio" class="section-block text-center bg-light">
+        <div class="container-fluid px-3">
+            <img src="logoallimite.png" alt="">
+            <p class="lead mx-auto" style="max-width: 100%; font-size: 1.4rem;">
+                Buscamos contar historias desde un enfoque social 
+                <br> que visibilice problemáticas en nuestra sociedad actual, 
+                <br> con una mirada que no juzga, que acompaña.
+            </p>
+        </div>
+    </header>
+
+    <!-- Spot Section -->
+    <section class="section-block section-alt text-center">
+        <div class="container-fluid px-3">
+            <h2 class="text-white mb-4" style="font-size: 3rem;">spot</h2>
+            <div style="max-width: 100%;">
+                <div class="video-container">
+                    <div class="video-placeholder" style="background-image: url('')" onclick="playVideo(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+                        <div class="play-button-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Libro de Producción Section -->
+    <section class="section-block text-center bg-light">
+        <div class="container-fluid px-3">
+            <h2 class="mb-4" style="font-size: 3rem; color: #2C7BB6;">Libro de producción</h2>
+            <p class="mb-4 text-muted">Descubre todo el proceso creativo detrás de Al Límite.</p>
+            <button class="btn-ludico" onclick="alert('Abriendo libro de producción...')">VER</button>
+        </div>
+    </section>
+
+    <!-- Personajes Section -->
+    <section id="personajes" class="section-block bg-white">
+        <div class="container-fluid px-3">
+            <h2 class="text-center mb-4" style="font-size: 3rem;">Personajes</h2>
+           <div class="carousel-wrapper">
+    <button class="carousel-btn carousel-btn-prev" onclick="scrollCarousel('personajesCarousel', -1)">❮</button>
+
+    <div id="personajesCarousel" class="carousel-container">
+    </div>
+
+    <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('personajesCarousel', 1)">❯</button>
+</div>
+
+    </section>
+
+    <!-- Bocetación Section -->
+    <section id="bocetacion" class="section-block section-alt">
+        <div class="container-fluid px-3">
+            <h2 class="text-center text-white mb-5" style="font-size: 3rem;">Bocetación</h2>
+            
+            <!-- Textos ¿Cómo? y ¿Para? -->
+            <div class="row mb-5">
+                <div class="col-md-6 mb-3">
+                    <div class="text-info-box">
+                        <h3>¿Cómo?</h3>
+                        <p>Se crearon 9 historias diferentes, cada uno con un exceso; de ahí pasamos a definir las características de cada personaje, y determinar como se vería cada uno. </p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="text-info-box">
+                        <h3>¿Para Qué?</h3>
+                        <p>El propósito de los personajes es que conecten con nuestro público objetivo, puedan conocer más de ellos y como sobrellevan sus adicciones.</p>
+                    </div>
+                </div>
+            </div>
+
+           <div class="carousel-wrapper">
+    <button class="carousel-btn carousel-btn-prev" onclick="scrollCarousel('bocetacionCarousel', -1)">❮</button>
+
+    <div id="bocetacionCarousel" class="carousel-container">
+    </div>
+
+    <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('bocetacionCarousel', 1)">❯</button>
+</div>
+
+    </section>
+
+    <!-- Ilustraciones Section -->
+    <section class="section-block bg-light">
+        <div class="container-fluid px-3">
+            <h2 class="text-center mb-4" style="font-size: 3rem;">Ilustraciones</h2>
+          <div class="carousel-wrapper">
+    <button class="carousel-btn carousel-btn-prev" onclick="scrollCarousel('ilustracionesCarousel', -1)">❮</button>
+
+    <div id="ilustracionesCarousel" class="carousel-container">
+    
+    </div>
+
+    <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('ilustracionesCarousel', 1)">❯</button>
+</div>
+
+    </section>
+
+    <!-- Making Of Section -->
+    <section class="section-block bg-white">
+        <div class="container-fluid px-3">
+            <h2 class="text-center mb-4" style="font-size: 3rem;">MAKING OF<br> <img src="logoallimite.png" alt="200px" width="200px">
+            <div class="mb-4" style="max-width: 100%;">
+                <div class="video-container">
+                    <div class="video-placeholder" style="background-image: url('')" onclick="playVideo(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+                        <div class="play-button-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-wrapper">
+    <button class="carousel-btn carousel-btn-prev" onclick="scrollCarousel('makingofCarousel', -1)">❮</button>
+
+    <div id="makingofCarousel" class="carousel-container">
+ 
+    </div>
+
+    <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('makingofCarousel', 1)">❯</button>
+</div>
+
+    </section>
+
+    <!-- Audiovisual Section -->
+    <section id="audiovisual" class="section-block section-alt">
+        <div class="container-fluid px-3">
+            <h2 class="text-center text-white mb-4" style="font-size: 3rem;">AUDIOVISUAL<br><img src="logoblanco.png" alt="200px" width="200px">
+            <div style="max-width: 100%;">
+                <div class="video-container">
+                    <div class="video-placeholder" style="background-image: url('')" onclick="playVideo(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+                        <div class="play-button-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestro Equipo Section -->
+<section id="equipo" class="section-block bg-light">
+    <div class="container-fluid px-3">
+        <h2 class="text-center mb-4" style="font-size: 3rem;">NUESTRO EQUIPO</h2>
+
+        <div class="carousel-wrapper">
+            <button class="carousel-btn carousel-btn-prev" onclick="scrollCarousel('equipoCarousel', -1)">❮</button>
+
+            <div id="equipoCarousel" class="carousel-container"></div>
+
+            <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('equipoCarousel', 1)">❯</button>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="footer-custom text-center">
+
+       <!-- CONTACTO -->
+<!-- CONTACTO -->
+<section id="contacto"
+    style="
+        background-image: url('ansiedadjojo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #87CEEB;
+        padding-top: 300px;
+        padding-bottom: 300px;
+        color: white;
+        position: relative;
+    "
+>
+
+    <div class="contacto-content">
+
+        <h1 class="contacto-title">
+            CONTÁCTANOS
+        </h1>
+
+        <div class="contacto-icons">
+            <a href="https://www.instagram.com/megafonetica/" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="mailto:megafonetica@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
+            <a href="https://wa.me/573223727459" target="_blank"><i class="bi bi-whatsapp"></i></a>
+        </div>
+
+    </div>
+
+</section>
+
+
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-custom">
+    <div class="modal-content-custom">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+
+        <div class="modal-header-custom" id="modalTitle"></div>
+
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Datos de carruseles
+const carouselData = {
+    personajes: [
+        { title: 'ESMERALDA', image: 'esmeralda.png', description: 'Adicta al trago desde los 16. Es egoísta y manipuladora, explotando a otros para asegurar su estilo de vida bohemio y errático, mientras evade toda responsabilidad.', details: 'Edad: 22 | Exceso: Alcohol. | Personalidad: Relajada, alegre, carismática, a veces inconsciente.' },
+
+        { title: 'RIVEN', image: 'riven.png', description: 'Riven es un joven sensible y creativo que depende de la música para funcionar y regular sus emociones. Sin sus audífonos, se desconecta de la realidad y es incapaz de socializar.', details: 'Edad: 18 | Exceso: Obsesionado por la tecnología. | Personalidad: Tímido, reservado, suele ponerse nervioso fácilmente con interacciones sociales.' },
+
+        { title: 'EIMY', image: 'eimy.png', description: 'Eimy es adicta al café (4+ tazas diarias) desde la universidad, donde lo usó como refugio contra el estrés. Es de poca “batería social” y le gusta el jazz. Se niega a admitir su vicio, creyendo que el café es parte de su identidad, a pesar de sufrir temblores y noches eternas.', details: 'Edad: 19 | Exceso:  Café. | Personalidad: Sociable y amable, le gusta conversar y reír, pero muchas veces ama pasar tiempo sola.' },
+
+        { title: 'LILY', image: 'lily.png', description: 'Lily proyecta una vida perfecta para ocultar su profunda inseguridad. Vive atrapada tras una fachada social impecable, creyendo que solo la perfección evita el rechazo.', details: 'Edad: 19 | Exceso: Apariencias. | Personalidad: Empática, extrovertida y divertida.' },
+
+        { title: 'LEO', image: 'leo.png', description: 'Leo sufre de dismorfia corporal por presión familiar, oculta su cuerpo y ansiedad tras una práctica obsesiva del deporte como mecanismo de defensa.', details: 'Edad: 19 | Exceso: Ejercicio. | Personalidad: Introvertido, amigable, tranquilo y juicioso.' },
+
+        { title: 'LUCIA', image: 'lucia.png', description: 'es alta, delgada, amable y social, pero con una mirada triste oculta tras una sonrisa. Vive sola en un apartamento desordenado, lleno de ropa y cajas con etiquetas. Se presenta como la más segura de la oficina , pero compra por impulso para llenar el vacío, la ansiedad, la tristeza o la soledad. Confundió el amor con lo que se puede comprar desde niña.', details: 'Edad: 25 | Exceso: Compras Compulsivas | Personalidad: Sociable, creativa, le gusta que las cosas se hagan a su manera' },
+
+        { title: 'FRANKIE', image: 'frankie.png', description: 'estudiante de Artes. Ansioso, sentimental y solitario, le cuesta socializar y abrirse, dejando que su intensa emoción lo consuma. Su pasión es el arte, pero su falta de energía y el tabaco (desde los 16) son su escape. Evita ser el centro de atención.', details: 'Edad: 24 | Exceso: Cigarro | Personalidad: Ansioso, introvertido, tranquilo y muy sentimental.' },
+
+        { title: 'ROBERTO', image: 'roberto.png', description: 'Roberto es adicto al trabajo obsesivo que mantiene tres empleos (Director de universidad, diseñador y trabajos extra). Es impecable en su apariencia, pero oculta un cansancio crónico y una vida solitaria con problemas de salud. Su compulsión viene de la presión infantil por ser “el mejor”.', details: 'Edad: 45 | Exceso: Trabajo | Personalidad: Carismático, apasionado, intenso y perfeccionista' },
+
+        { title: 'MILLIE', image: 'millie.png', description: 'Millie es un “espíritu libre” independiente que estudia Artes. Es inteligente y piensa fuera del molde, pero explota ante las mentiras. Vive del alquiler de su casa heredada, rodeada de mascotas y plantas.', details: 'Edad: 22 | Exceso: Marihuana | Personalidad: Independiente, explosiva con la gente, inteligente y relajada' },
+
+    ],
+
+    bocetacion: [
+        { title: 'Boceto 1', image: 'rivenboc.png', description: 'Primer boceto.' },
+        { title: 'Boceto 2', image: 'millieboc.png', description: 'Segundo boceto.' },
+        { title: 'Boceto 3', image: 'frankieboc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 4', image: 'esmeraldaboc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 5', image: 'lilyboc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 6', image: 'luciaboc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 7', image: 'eimyboc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 8', image: 'leoboc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 9', image: 'robertoboc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 10', image: 'bocsk.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 11', image: 'bocsk2.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 12', image: 'bocsk3.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 13', image: 'vistas1boc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 14', image: 'vistas2boc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 15', image: 'vistas3boc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 16', image: 'vistas4boc.png', description: 'Tercer boceto.' },
+        { title: 'Boceto 17', image: 'vistas5boc.png', description: 'Tercer boceto.' },
+       
+    ],
+
+    ilustraciones: [
+        { title: 'Ilustracion 1', image: 'leoillus.png', description: 'Ilustración 1.' },
+        { title: 'Ilustracion 2', image: 'rivenillus.png', description: 'Ilustración 2.' },
+        { title: 'Ilustracion 3', image: 'eimyillus.png', description: 'Ilustración 3.' },
+        { title: 'Ilustracion 4', image: 'frankieillus.jpg', description: 'Ilustración 4.' },
+        { title: 'Ilustracion 5', image: 'millieillus.png', description: 'Ilustración final 5.' },
+        { title: 'Ilustracion 6', image: 'esmeraldaillus.png', description: 'Ilustración final 6.' },
+        { title: 'Ilustracion 7', image: 'robertoillus.png', description: 'Ilustración final 7.' },
+        { title: 'Ilustracion 8', image: 'lilyillus.png', description: 'Ilustración final 8.' },
+        { title: 'Ilustracion 9', image: 'luciaillus.png', description: 'Ilustración final 9.' },
+
+    ], 
+
+        equipo: [
+        { title: 'Mariana', image: 'mariana.jpg', description: 'Holii, mi nombre es Mariana, soy la lider, directora general y la marketing manager del proyecto, me encargo de que todo en el proyecto se lleve en orden, y en el manejo de las redes sociales.'},
+        { title: 'Paula', image: 'paula.png', description: 'Hola, mi nombre es Paula, y en este proyecto desempeño el rol de diseñadora gráfica, animadora y sonidista, con mi trabajo busco combinar la creatividad y la técnica para transmitir mensajes claros y efectivos'},
+        { title: 'Sara', image: 'sara.jpg', description: 'Holaa, soy Sara. Apoyo a la directora en el proyecto audiovisual, diseño diferentes piezas gráficas y me encargo de la programación del proyecto, espero les guste nuestro trabajo<3' },
+        { title: 'Alan', image: 'alann.jpg', description: 'Hola! Soy Alan Galindo. El diseñador gráfico, illustrador y director de arte de este proyecto, un gusto.' },
+        { title: 'Liceth', image: 'liz.png', description: 'Holaaa mi nombre es Liz, soy la productora audiovisual de este proyecto, cumplo con organizar, coordinar y planificar el trabajo de cada uno de nosotros. Apoyo en el área de animación y arte.' },
+        { title: 'Diana', image: 'diana.jpg', description: 'Hola soy Diana, responsable de la captura y la postproducción de video, complementando el diseño y soporte web.' },
+        { title: 'Johan', image: 'johan.jpg', description: 'Holaaa, mi nombre es Johan Fernández, me desempeño como guionista, asistente de fotografía y editor de nuestro audiovisual, espero que nuestro proyecto sea de su agrado, graciass.' }
+    ],
+
+    
+    makingof: [
+       { title: 'Set de Grabación', image: 'mko1.jpg', description: 'Detrás de cámaras.' }, 
+       { title: 'Edición', image: 'mko2.jpg', description: 'Proceso de edición.' },
+       { title: 'a', image: 'mko3.jpg', description: 'Proceso de edición.' },
+       { title: 'b', image: 'mko4.jpg', description: 'Proceso de edición.' },
+       { title: 'c', image: 'mko5.jpg', description: 'Proceso de edición.' },
+       { title: 'd', image: 'mko6.jpg', description: 'Proceso de edición.' },
+       { title: 'e', image: 'mko7.jpg', description: 'Proceso de edición.' },
+       { title: 'f', image: 'mko8.jpg', description: 'Proceso de edición.' },
+       { title: 'g', image: 'mko9.jpg', description: 'Proceso de edición.' },
+       { title: 'h', image: 'mko10.jpg', description: 'Proceso de edición.' },
+       { title: 'i', image: 'mko11.jpg', description: 'Proceso de edición.' },
+       { title: 'j', image: 'mko12.jpg', description: 'Proceso de edición.' },
+       { title: 'k', image: 'mko13.jpg', description: 'Proceso de edición.' },
+       { title: 'l', image: 'mko14.jpg', description: 'Proceso de edición.' },
+       { title: 'm', image: 'mko15.jpg', description: 'Proceso de edición.' },
+       { title: 'n', image: 'mko16.jpg', description: 'Proceso de edición.' },
+       { title: 'o', image: 'mko17.jpg', description: 'Proceso de edición.' },
+       { title: 'q', image: 'mko18.jpg', description: 'Proceso de edición.' },
+       { title: 'r', image: 'mko19.jpg', description: 'Proceso de edición.' },
+       { title: 's', image: 'mko20.jpg', description: 'Proceso de edición.' },
+    
+     ] };
+
+
+function loadCarousel(id, type) {
+    const container = document.getElementById(id);
+    container.innerHTML = "";
+
+    carouselData[type].forEach(item => {
+        container.innerHTML += `
+            <div class="carousel-item-wrapper">
+                <div class="carousel-card" onclick="openModal('${type}', '${item.title}')">
+                    <img src="${item.image}">
+                    ${type === 'personajes'  || type === 'equipo' ? `
+                        <div class="carousel-card-body">
+                            <h3 class="carousel-card-title">${item.title}</h3>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+    });
+}
+
+
+// Botones q deslizan horizontalmente
+function scrollCarousel(id, direction) {
+    const container = document.getElementById(id);
+    container.scrollBy({
+        left: direction * 300,
+        behavior: 'smooth'
+    });
+}
+
+
+// Modal
+function openModal(type, title) {
+    const item = carouselData[type].find(x => x.title === title);
+
+
+    // SOLO PERSONAJES muestran la barra azul
+   if (type === "personajes" || type === "equipo") {
+
+    document.getElementById("modalTitle").style.display = "block";
+    document.getElementById("modalTitle").textContent = title;
+
+    document.getElementById("modalBody").innerHTML = `
+        <img src="${item.image}" style="width:100%; border-radius:15px; margin-bottom:20px;">
+        <h4>${type === "equipo" ? "ROL" : "Descripción"}</h4>
+        <p>${item.description}</p>
+        ${item.details ? `<h5 class="mt-3">Detalles</h5><p>${item.details}</p>` : ""}
+    `;
+
+    document.querySelector(".modal-content-custom").style.maxWidth = "600px";
+}
+
+
+
+    else {
+        document.getElementById("modalTitle").style.display = "none";
+
+        if (type === "makingof") {
+            document.getElementById("modalBody").innerHTML = `
+                <img src="${item.image}" 
+                    style="width:100%; height:auto; max-height:90vh; border-radius:20px; object-fit:cover;">
+            `;
+
+            document.querySelector(".modal-content-custom").style.maxWidth = "900px";
+        } 
+        
+        else {
+            document.getElementById("modalBody").innerHTML = `
+                <img src="${item.image}" 
+                    style="width:100%; height:auto; max-height:80vh; border-radius:15px; object-fit:contain;">
+            `;
+
+            document.querySelector(".modal-content-custom").style.maxWidth = "600px";
+        }
+    }
+
+    document.getElementById("modal").classList.add("active");
+}
+
+function closeModal() {
+    document.getElementById("modal").classList.remove("active");
+}
+
+
+
+// Cargar todo al inicio
+window.onload = () => {
+    loadCarousel('personajesCarousel', 'personajes');
+    loadCarousel('bocetacionCarousel', 'bocetacion');
+    loadCarousel('ilustracionesCarousel', 'ilustraciones');
+    loadCarousel('makingofCarousel', 'makingof');
+    loadCarousel('equipoCarousel', 'equipo');
+};
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
