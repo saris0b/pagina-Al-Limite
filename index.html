@@ -587,20 +587,23 @@ header img {
     </header>
 
     <!-- Spot Section -->
-    <section class="section-block section-alt text-center">
-        <div class="container-fluid px-3">
-            <h2 class="text-white mb-4" style="font-size: 3rem;">spot</h2>
-            <div style="max-width: 100%;">
-                <div class="video-container">
-                    <div class="video-placeholder" style="background-image: url('')" onclick="playVideo(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
-                        <div class="play-button-overlay">
-                            <div class="play-icon"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section class="section-block section-alt text-center">
+  <div class="container-fluid px-3">
+    <h2 class="text-white mb-4" style="font-size: 3rem;">spot</h2>
+    <div style="max-width: 100%;">
+      <div class="video-container">
+        <div class="video-placeholder"
+             style="background-image: url('preview-spot.jpg')" 
+             onclick="playVideo(this, 'https://www.youtube.com/embed/WMtHzWu1JUQ?autoplay=1')">
+          <div class="play-button-overlay">
+            <div class="play-icon"></div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Libro de Producción Section -->
     <section class="section-block text-center bg-light">
@@ -976,6 +979,17 @@ window.onload = () => {
                 closeModal();
             }
         });
+
+
+        function playVideo(element, videoUrl) {
+  element.parentElement.innerHTML = `
+    <iframe src="${videoUrl}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+    </iframe>`;
+}
+
     </script>
 </body>
 </html>
