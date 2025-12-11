@@ -527,12 +527,12 @@ header img {
 
 #equipo .carousel-card img {
     width: 100%;
-    height: 380px;
-    object-fit: contain;
+    height: 550px;
+    object-fit: cover;
 }
 
 #equipo .carousel-card-body {
-    padding: 15px;
+    padding: 25px;
     background: #6c757d;
     color: white;
     text-align: center;
@@ -557,6 +557,28 @@ header img {
     }
 }
 
+.team-photo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.team-photo {
+    width: 100%;
+    max-width: 1200px; /* tamaño grande en PC */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    object-fit: cover;
+}
+
+/* Celular */
+@media (max-width: 576px) {
+    .team-photo {
+        max-width: 100%;
+        border-radius: 15px;
+    }
+}
 
     </style>
 </head>
@@ -691,9 +713,11 @@ header img {
             <h2 class="text-center mb-4" style="font-size: 3rem;">MAKING OF<br> <img src="logoallimite.png" alt="200px" width="200px">
             <div class="mb-4" style="max-width: 100%;">
                 <div class="video-container">
-                    <div class="video-placeholder" style="background-image: url('')" onclick="playVideo(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
-                        <div class="play-button-overlay">
-                            <div class="play-icon"></div>
+                    <div class="video-placeholder"
+                     style="background-image: url('preview-makingof.jpg')" 
+                         onclick="playVideo(this, 'https://www.youtube.com/embed/FK371x9i42k?autoplay=1')">
+                             <div class="play-button-overlay">
+                             <div class="play-icon"></div>
                         </div>
                     </div>
                 </div>
@@ -716,8 +740,10 @@ header img {
             <h2 class="text-center text-white mb-4" style="font-size: 3rem;">AUDIOVISUAL<br><img src="logoblanco.png" alt="200px" width="200px">
             <div style="max-width: 100%;">
                 <div class="video-container">
-                    <div class="video-placeholder" style="background-image: url('')" onclick="playVideo(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
-                        <div class="play-button-overlay">
+                    <div class="video-placeholder"
+                         style="background-image: url('preview-audiovisual.jpg')" 
+                        onclick="playVideo(this, 'https://www.youtube.com/embed/l-HIyxYOXeg?autoplay=1')">
+                         <div class="play-button-overlay">
                             <div class="play-icon"></div>
                         </div>
                     </div>
@@ -737,6 +763,10 @@ header img {
             <div id="equipoCarousel" class="carousel-container"></div>
 
             <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('equipoCarousel', 1)">❯</button>
+
+            <div class="team-photo-wrapper mt-5">
+             <img src="foto_grupal.jpg" class="team-photo" alt="Foto grupal del equipo">
+        </div>
         </div>
     </div>
 </section>
@@ -844,13 +874,13 @@ const carouselData = {
     ], 
 
         equipo: [
-        { title: 'Mariana', image: 'mariana.jpg', description: 'Holii, mi nombre es Mariana, soy la lider, directora general y la marketing manager del proyecto, me encargo de que todo en el proyecto se lleve en orden, y en el manejo de las redes sociales.'},
-        { title: 'Paula', image: 'paula.png', description: 'Hola, mi nombre es Paula, y en este proyecto desempeño el rol de diseñadora gráfica, animadora y sonidista, con mi trabajo busco combinar la creatividad y la técnica para transmitir mensajes claros y efectivos'},
-        { title: 'Sara', image: 'sara.jpg', description: 'Holaa, soy Sara. Apoyo a la directora en el proyecto audiovisual, diseño diferentes piezas gráficas y me encargo de la programación del proyecto, espero les guste nuestro trabajo<3' },
-        { title: 'Alan', image: 'alann.jpg', description: 'Hola! Soy Alan Galindo. El diseñador gráfico, illustrador y director de arte de este proyecto, un gusto.' },
-        { title: 'Liceth', image: 'liz.png', description: 'Holaaa mi nombre es Liz, soy la productora audiovisual de este proyecto, cumplo con organizar, coordinar y planificar el trabajo de cada uno de nosotros. Apoyo en el área de animación y arte.' },
-        { title: 'Diana', image: 'diana.jpg', description: 'Hola soy Diana, responsable de la captura y la postproducción de video, complementando el diseño y soporte web.' },
-        { title: 'Johan', image: 'johan.jpg', description: 'Holaaa, mi nombre es Johan Fernández, me desempeño como guionista, asistente de fotografía y editor de nuestro audiovisual, espero que nuestro proyecto sea de su agrado, graciass.' }
+        { title: 'Mariana', image: 'marianafp.jpg', description: 'Holii, mi nombre es Mariana, soy la lider, directora general y la marketing manager del proyecto, me encargo de que todo en el proyecto se lleve en orden, y en el manejo de las redes sociales.'},
+        { title: 'Paula', image: 'paulafp.jpg', description: 'Hola, mi nombre es Paula, y en este proyecto desempeño el rol de diseñadora gráfica, animadora y sonidista, con mi trabajo busco combinar la creatividad y la técnica para transmitir mensajes claros y efectivos'},
+        { title: 'Sara', image: 'sarafp.jpg', description: 'Holaa, soy Sara. Apoyo a la directora en el proyecto audiovisual, diseño diferentes piezas gráficas y me encargo de la programación del proyecto, espero les guste nuestro trabajo<3' },
+        { title: 'Alan', image: 'alanfp.jpg', description: 'Hola! Soy Alan Galindo. El diseñador gráfico, illustrador y director de arte de este proyecto, un gusto.' },
+        { title: 'Liceth', image: 'lizfp.jpg', description: 'Holaaa mi nombre es Liz, soy la productora audiovisual de este proyecto, cumplo con organizar, coordinar y planificar el trabajo de cada uno de nosotros. Apoyo en el área de animación y arte.' },
+        { title: 'Diana', image: 'dianafp.jpg', description: 'Hola soy Diana, responsable de la captura y la postproducción de video, complementando el diseño y soporte web.' },
+        { title: 'Johan', image: 'johanfp.jpg', description: 'Holaaa, mi nombre es Johan Fernández, me desempeño como guionista, asistente de fotografía y editor de nuestro audiovisual, espero que nuestro proyecto sea de su agrado, graciass.' }
     ],
 
     
@@ -914,49 +944,63 @@ function scrollCarousel(id, direction) {
 function openModal(type, title) {
     const item = carouselData[type].find(x => x.title === title);
 
+    // === EQUIPO ===
+    if (type === "equipo") {
 
-    // SOLO PERSONAJES muestran la barra azul
-   if (type === "personajes" || type === "equipo") {
+        document.getElementById("modalTitle").style.display = "block";
+        document.getElementById("modalTitle").textContent = title;
 
-    document.getElementById("modalTitle").style.display = "block";
-    document.getElementById("modalTitle").textContent = title;
+        document.getElementById("modalBody").innerHTML = `
+            <img src="${item.image}" style="width:100%; border-radius:15px; margin-bottom:20px;">
+            <h4>ROL</h4>
+            <p>${item.description}</p>
+        `;
 
-    document.getElementById("modalBody").innerHTML = `
-        <img src="${item.image}" style="width:100%; border-radius:15px; margin-bottom:20px;">
-        <h4>${type === "equipo" ? "ROL" : "Descripción"}</h4>
-        <p>${item.description}</p>
-        ${item.details ? `<h5 class="mt-3">Detalles</h5><p>${item.details}</p>` : ""}
-    `;
+        document.querySelector(".modal-content-custom").style.maxWidth = "900px";
 
-    document.querySelector(".modal-content-custom").style.maxWidth = "600px";
-}
+        document.getElementById("modal").classList.add("active");
+        return;
+    }
 
+    // === PERSONAJES ===
+    if (type === "personajes") {
 
+        document.getElementById("modalTitle").style.display = "block";
+        document.getElementById("modalTitle").textContent = title;
 
-    else {
-        document.getElementById("modalTitle").style.display = "none";
+        document.getElementById("modalBody").innerHTML = `
+            <img src="${item.image}" style="width:100%; border-radius:15px; margin-bottom:20px;">
+            <h4>Descripción</h4>
+            <p>${item.description}</p>
+            ${item.details ? `<h5 class="mt-3">Detalles</h5><p>${item.details}</p>` : ""}
+        `;
 
-        if (type === "makingof") {
-            document.getElementById("modalBody").innerHTML = `
-                <img src="${item.image}" 
-                    style="width:100%; height:auto; max-height:90vh; border-radius:20px; object-fit:cover;">
-            `;
+        document.querySelector(".modal-content-custom").style.maxWidth = "450px";
 
-            document.querySelector(".modal-content-custom").style.maxWidth = "900px";
-        } 
-        
-        else {
-            document.getElementById("modalBody").innerHTML = `
-                <img src="${item.image}" 
-                    style="width:100%; height:auto; max-height:80vh; border-radius:15px; object-fit:contain;">
-            `;
+        document.getElementById("modal").classList.add("active");
+        return;
+    }
 
-            document.querySelector(".modal-content-custom").style.maxWidth = "600px";
-        }
+    // === (MAKING OF / ILUSTRACIONES / BOCETACIÓN) ===
+    document.getElementById("modalTitle").style.display = "none";
+
+    if (type === "makingof") {
+        document.getElementById("modalBody").innerHTML = `
+            <img src="${item.image}" 
+                style="width:100%; height:auto; max-height:90vh; border-radius:20px; object-fit:cover;">
+        `;
+        document.querySelector(".modal-content-custom").style.maxWidth = "900px";
+    } else {
+        document.getElementById("modalBody").innerHTML = `
+            <img src="${item.image}" 
+                style="width:100%; height:auto; max-height:80vh; border-radius:15px; object-fit:contain;">
+        `;
+        document.querySelector(".modal-content-custom").style.maxWidth = "600px";
     }
 
     document.getElementById("modal").classList.add("active");
 }
+
 
 function closeModal() {
     document.getElementById("modal").classList.remove("active");
