@@ -580,13 +580,6 @@ header img {
     }
 }
 
-@media (orientation: landscape) and (max-width: 576px) {
-    #libroContainer iframe {
-        transform: rotate(0deg);
-    }
-}
-
-
     </style>
 </head>
 <body>
@@ -643,30 +636,15 @@ header img {
 
 
     <!-- Libro de Producción Section -->
-  <section class="section-block text-center bg-light">
+ <section class="section-block text-center bg-light">
     <div class="container-fluid px-3">
         <h2 class="mb-4" style="font-size: 3rem; color: #2C7BB6;">Libro de producción</h2>
         <p class="mb-4 text-muted">Descubre todo el proceso creativo detrás de Al Límite.</p>
-
-        <!-- BOTÓN -->
-        <button class="btn-ludico" onclick="mostrarLibro()">VER</button>
-
-        <!-- CONTENEDOR PARA EL LIBRO -->
-        <div id="libroContainer" style="display:none; margin-top:30px;">
-            <iframe 
-                src="https://online.fliphtml5.com/megafonetica123/al-limite/" 
-                style="width:100%; height:600px; border:0; border-radius:20px; box-shadow:0 10px 20px rgba(0,0,0,0.2);">
-            </iframe>
-        </div>
+        <a href="https://online.fliphtml5.com/megafonetica123/al-limite/" target="_blank">
+            <button class="btn-ludico">VER</button>
+        </a>
     </div>
 </section>
-
-<script>
-function mostrarLibro() {
-    document.getElementById('libroContainer').style.display = 'block';
-    window.location.hash = 'libroContainer'; // baja automáticamente
-}
-</script>
 
 
     <!-- Personajes Section -->
